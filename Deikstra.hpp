@@ -3,9 +3,10 @@
 #include <cstdio>
 const int MAX_INT = 777;
 template<typename T>
-void deikstra(T** matrix, int numberOfVert, int startVert, int endVert, int * goodPath, int& countPath, T* minLength) {
+void deikstra(GraphMatrix<int> *matrix,  int startVert, int endVert, int * goodPath, int& countPath, T* minLength) {
     --startVert;
     --endVert;
+    int numberOfVert = matrix->getSize();
     //minLength минимальное расстояние
     int * v = (T*)malloc(sizeof(int) * numberOfVert); // посещенные вершины
     int temp, minindex, min;
@@ -36,9 +37,9 @@ void deikstra(T** matrix, int numberOfVert, int startVert, int endVert, int * go
         {
             for (int i = 0; i < numberOfVert; i++)
             {
-                if (matrix[minindex][i] > 0)
+                if (matrix->getWeight(minindex,i) > 0)
                 {
-                    temp = min + matrix[minindex][i];
+                    temp = min + matrix->getWeight(minindex,i);
                     if (temp < minLength[i])
                     {
                         minLength[i] = temp;
@@ -59,9 +60,9 @@ void deikstra(T** matrix, int numberOfVert, int startVert, int endVert, int * go
     while (endVert != startVert) // пока не дошли до начальной вершины
     {
         for (int i = 0; i < numberOfVert; i++) // просматриваем все вершины
-            if (matrix[i][endVert] != 0)   // если связь есть
+            if (matrix->getWeight(i,endVert) != 0)   // если связь есть
             {
-                int temp = weight - matrix[i][endVert]; // определяем вес пути из предыдущей вершины
+                int temp = weight - matrix->operator()(i,endVert); // определяем вес пути из предыдущей вершины
                 if (temp == minLength[i]) // если вес совпал с рассчитанным
                 {                 // значит из этой вершины и был переход
                     weight = temp; // сохраняем новый вес

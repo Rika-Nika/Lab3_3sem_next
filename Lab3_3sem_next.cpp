@@ -137,7 +137,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Сохранить маркер экземпляра в глобальной переменной
 
-    HWND hWnd = CreateWindowW(szWindowClass, L"Лабораторная работа 3", WS_OVERLAPPEDWINDOW,
+    HWND hWnd = CreateWindowW(szWindowClass, L"Лабораторная работа 2", WS_OVERLAPPEDWINDOW,
         250, 250, 1100, 650, nullptr, nullptr, hInstance, nullptr);
 
     if (!hWnd)
@@ -199,7 +199,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             hInst, NULL);
         hFile1Button = CreateWindowEx(WS_EX_WINDOWEDGE,
             L"BUTTON",
-            L"Matrix1.txt",
+            L"Matrix1",
             WS_VISIBLE | WS_CHILD | BS_AUTORADIOBUTTON | WS_GROUP,  // <---- WS_GROUP group the following radio buttons 1st,2nd button 
             20, 30,
             300, 20,
@@ -209,7 +209,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         hFile2Button = CreateWindowEx(WS_EX_WINDOWEDGE,
             L"BUTTON",
-            L"Matrix2.txt",
+            L"Matrix2",
             WS_VISIBLE | WS_CHILD | BS_AUTORADIOBUTTON,  // Styles 
             20, 50,
             300, 20,
@@ -218,7 +218,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             hInst, NULL);
         hFile3Button = CreateWindowEx(WS_EX_WINDOWEDGE,
             L"BUTTON",
-            L"Matrix3.txt",
+            L"Matrix3",
             WS_VISIBLE | WS_CHILD | BS_AUTORADIOBUTTON,  // Styles 
             20, 70,
             300, 20,
@@ -238,7 +238,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             hInst, NULL);
         hLoadPathButton = CreateWindowEx(WS_EX_WINDOWEDGE,
             L"edit",
-            L"Matrix1.txt",
+            L"Matrix1",
             WS_CHILD | WS_VISIBLE | WS_BORDER | ES_LEFT,  // <---- WS_GROUP group the following radio buttons 1st,2nd button 
             80, 90,
             215, 20,
@@ -298,7 +298,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             hInst, NULL);
         hAlg1Button = CreateWindowEx(WS_EX_WINDOWEDGE,
             L"BUTTON",
-            L"Дейкстра ",
+            L"Дейкстра vs Флойда-Уоршелла",
             WS_VISIBLE | WS_CHILD | BS_AUTORADIOBUTTON | WS_GROUP,  // <---- WS_GROUP group the following radio buttons 1st,2nd button 
             350, 30,
             300, 20,

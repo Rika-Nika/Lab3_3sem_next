@@ -147,7 +147,9 @@
     <ClInclude Include="Deikstra.hpp" />
     <ClInclude Include="DynamicArray.hpp" />
     <ClInclude Include="Exception.h" />
+    <ClInclude Include="FloydWarshall.hpp" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GraphMatrix.hpp" />
     <ClInclude Include="IDictionary.hpp" />
     <ClInclude Include="IPriorityQueue.h" />
     <ClInclude Include="Lab3_3sem_next.hpp" />

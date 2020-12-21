@@ -5,6 +5,8 @@
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/interprocess/mapped_region.hpp>
 
+#include "GraphMatrix.hpp"
+
 
 enum class Alg {
 	Alg1,
@@ -69,7 +71,7 @@ inline std::wstring s2ws(const std::string& s)
 }
 
 template<typename T>
-T** loadMatrix(std::wstring fileName, int& _numberOfVert)
+GraphMatrix<T>* loadMatrix(std::wstring fileName, int& _numberOfVert)
 {
 
 	std::wstring path = L"c:\\tmp\\Lab3_3sem\\";
@@ -84,15 +86,12 @@ T** loadMatrix(std::wstring fileName, int& _numberOfVert)
 	_numberOfVert = numberOfVert;
 	std::cout << numberOfVert << std::endl;
 	//Матрица смежности с весами ребер графа(777 - ребра нет, 0 ребро в себя)
-	T** _matrix = (T**)malloc(sizeof(T) * numberOfVert);
-	for (int i = 0; i < numberOfVert; i++) {
-		_matrix[i] = (T*)malloc(sizeof(int) * numberOfVert);
-	}
-
+	GraphMatrix<T> *_matrix = new GraphMatrix<T>(numberOfVert);
+	
 	//Считываем матрицу весов ребер
 	for (int i = 0; i < numberOfVert; i++) {
 		for (int j = 0; j < numberOfVert; j++) {
-			file >> _matrix[i][j];
+			file >> _matrix->operator()(i,j);
 		}
 	}
 
